@@ -7,3 +7,4 @@ Route::get('/', function () {
 });
 
 Route::post('/saveTask', [TaskController::class, 'saveTask'])->name("saveTask");
+Route::get('/getTasks', [TaskController::class, 'getTasks'])->name("getTasks");

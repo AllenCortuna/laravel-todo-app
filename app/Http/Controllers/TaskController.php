@@ -16,4 +16,9 @@ class TaskController extends Controller
 
         return view('welcome');
     }
+
+    public function getTasks(Request $request)
+    {
+        return view('taskList');
+    }
 }
