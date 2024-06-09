@@ -8,14 +8,28 @@
     <title>Document</title>
 </head>
 
-<body class="flex justify-center flex-col w-screen pt-20 ">
-    <form method="post" action="{{route("saveTask")}}" class="mx-auto flex flex-col w-80 gap-10 p-5 bg-white rounded-md shadow">
-        <h2>Enter Task</h2>
+<body>
+    <h2>Enter Task</h2>
+    <form method="post" action="{{route("saveTask")}}">
         {{csrf_field()}}
-        <input type="text" placeholder="task name" name="title" class="custom-input">
-        <input type="text-area" name="description" id="" placeholder="description" class="custom-input">
+        <input type="text" placeholder="task name" name="title" >
+        <input type="text-area" name="description" id="" placeholder="description">
         <button type="submit">Submit</button>
     </form>
+    <br>
+    <div>
+        @foreach ($taskList as $task)
+            <span>{{$task->id}}</span>
+            <span>{{$task->title}}</span>
+            <span>{{$task->description}}</span>
+            <form method="post" action="{{route("deleteTask", $task->id)}}">
+                {{csrf_field()}}
+                <button>delete</button>
+            </form>
+            <br>
+        @endforeach
+    </div>
+
 </body>
 
 </html>
